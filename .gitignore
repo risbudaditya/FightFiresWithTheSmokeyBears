@@ -29,3 +29,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# ENV
+*.env
+
+*/__pycache__/
