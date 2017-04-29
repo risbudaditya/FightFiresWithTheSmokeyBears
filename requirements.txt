@@ -1,3 +1,4 @@
 clarifai==2.0.21
 Flask==0.12.1
 twilio==6.1.0
+psycopg2==2.7.1
