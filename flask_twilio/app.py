@@ -4,7 +4,7 @@
 # debug mode for auto restart on file update
 
 from flask import Flask
-from flask import request
+from flask import request, jsonify
 
 app = Flask(__name__)
 
@@ -16,3 +16,7 @@ def message():
     media_url = request.values.get("MediaUrl0", "")
     return ("<Response><Message>{} from {} url {}</Message></Response>".format(body,number,media_url))
 
+@app.route("/dummy", methods=["GET"])
+
+def dummy():
+    return 'Hello World'
