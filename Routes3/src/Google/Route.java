@@ -15,7 +15,7 @@ public class Route extends ArrayList<Coordinate> {
         Iterator<Coordinate> it = this.iterator();
         while(it.hasNext()) {
             Coordinate aCoord = it.next();
-            aBuilder.append(PREFIX+aCoord.getCoords());
+            aBuilder.append(DELIMITER+aCoord.getCoords());
         }
         return aBuilder.toString();
     }

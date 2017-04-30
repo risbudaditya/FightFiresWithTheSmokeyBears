@@ -1,1 +1,1 @@
-<%=Controllers.MapsForUsers.mapsForUsers()%>
+<%=Controllers.MapsForUsers.mapsForUsers().replace("\\/","/")%>
