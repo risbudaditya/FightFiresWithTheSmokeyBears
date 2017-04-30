@@ -27,6 +27,7 @@ public class Route extends ArrayList<Coordinate> {
         Location aLocation = new Location();
         aLocation.lat  = new Double(latLong.lat).toString();
         aLocation.lon  = new Double(latLong.lng).toString();
+        add(aLocation);
     }
 
 }

@@ -33,7 +33,18 @@ public class RESTClient {
             out.append(line);
         }
         con.disconnect();
-        return (JSONObject) new JSONParser().parse(out.toString());
+        return (JSONObject) new JSONParser().parse(URL==Data.FIRES_CLUSTERS_ENDPOINT?out.toString():"{\"victims\": [\n" +
+                "[\n" +
+                "  \"123-456-7890\"\n" +
+                "  36.247, \n" +
+                "  -119.126, \n" +
+                "],\n" +
+                "[\n" +
+                "  \"555-456-7890\"\n" +
+                "  36.307, \n" +
+                "  -119.166, \n" +
+                "]\n" +
+                "]}");
         /*return (JSONObject) new JSONParser().parse(URL==Data.FIRES_CLUSTERS_ENDPOINT?"{\n" +
                 "  \"clusters\": [\n" +
                 "    [\n" +

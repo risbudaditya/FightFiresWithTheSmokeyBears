@@ -29,7 +29,7 @@ public class VictimRoute {
     public String getRouteToNearestCluster(Data data, Location location) throws InterruptedException, ApiException, IOException {
 
         Cluster cluster = getClosestCluster(data, location);
-        return getRouteToClusterURL(data, location, cluster);
+        return getRouteToClusterURLBeta(data, location, cluster);
     }
 
     public Cluster getClosestCluster(Data data, Location location) throws InterruptedException, ApiException, IOException {
