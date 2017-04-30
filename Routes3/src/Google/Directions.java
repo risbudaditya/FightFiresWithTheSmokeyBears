@@ -18,19 +18,22 @@ public class Directions {
         /*DirectionsResult aResult = ( DirectionsApi.newRequest(ctx) ).origin(origin.lat+","+origin.lon).
         destination(dest.lat+","+dest.lon).await();*/
 
-
-        DirectionsResult aResult = DirectionsApi.getDirections(ctx, origin.getCoords(), dest.getCoords()).await();
-        Duration duration = aResult.routes[0].legs[0].duration;
-        return duration.inSeconds;
+        try {
+            DirectionsResult aResult = DirectionsApi.getDirections(ctx, origin.getCoords(), dest.getCoords()).await();
+            Duration duration = aResult.routes[0].legs[0].duration;
+            return duration.inSeconds;
+        } catch(Exception e) {
+            return Long.MAX_VALUE;
+        }
 
     }
 
-    public DirectionsRoute[] getMultipleRoutes(Coordinate origin, Coordinate dest) {
+    public DirectionsRoute[] getMultipleRoutes(GeoApiContext ctx, Coordinate origin, Coordinate dest) throws InterruptedException, ApiException, IOException {
         DirectionsResult aResult = DirectionsApi.getDirections(ctx, origin.getCoords(), dest.getCoords()).alternatives(true).await();
         return aResult.routes;
     }
 
     public boolean coordinateIsOnRoute(Coordinate aCoord, DirectionsRoute route) {
-        
+        return false;
     }
 }

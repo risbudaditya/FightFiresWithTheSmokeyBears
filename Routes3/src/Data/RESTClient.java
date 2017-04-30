@@ -17,7 +17,7 @@ public class RESTClient {
 
 
     public JSONObject getJSON(String URL) throws Exception {
-        /*java.net.URL url = new URL(URL);
+        java.net.URL url = new URL(URL);
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("Accept", "application/json");
@@ -33,8 +33,8 @@ public class RESTClient {
             out.append(line);
         }
         con.disconnect();
-        return (JSONObject) new JSONParser().parse(out.toString());*/
-        return (JSONObject) new JSONParser().parse(URL==Data.FIRES_CLUSTERS_ENDPOINT?"{\n" +
+        return (JSONObject) new JSONParser().parse(out.toString());
+        /*return (JSONObject) new JSONParser().parse(URL==Data.FIRES_CLUSTERS_ENDPOINT?"{\n" +
                 "  \"clusters\": [\n" +
                 "    [\n" +
                 "      36.297, \n" +
@@ -76,6 +76,6 @@ public class RESTClient {
                 "  -119.166, \n" +
                 "  \"555-456-7890\"\n" +
                 "]\n" +
-                "]}");
+                "]}");*/
     }
 }

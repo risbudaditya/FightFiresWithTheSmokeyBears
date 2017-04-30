@@ -13,14 +13,15 @@ import java.util.Iterator;
  */
 public class Locations extends ArrayList<Location>  {
     public void load(JSONObject json) {
-        JSONArray anArray = (JSONArray)json.get("locations");
+        JSONArray anArray = (JSONArray)json.get("victims");
         Iterator<JSONArray> it = anArray.iterator();
         while(it.hasNext()) {
             JSONArray obj = it.next();
             Location aLoc = new Location();
-            aLoc.lat = new Double((Double)obj.get(0)).toString();
-            aLoc.lon = new Double((Double)obj.get(1)).toString();
-            aLoc.num = (String)obj.get(2);
+            aLoc.num = (String)obj.get(0);
+            aLoc.lat = new Double((Double)obj.get(1)).toString();
+            aLoc.lon = new Double((Double)obj.get(2)).toString();
+
             add(aLoc);
         }
     }

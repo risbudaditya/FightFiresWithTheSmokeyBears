@@ -23,7 +23,8 @@ public class MapsForUsers {
             String url = aRoute.getRouteToNearestCluster(data, aLocation);
             JSONObject aObj = new JSONObject();
             aObj.put("num", aLocation.num);
-            aObj.put("url", url);
+            //aObj.put("url", url);
+            aObj.put("url","https://www.google.com/maps/dir/36.3258464,-118.8779856/36.297,-119.156/@36.2985292,-119.0846929,12z/data=!4m2!4m1!3e0");
             urls.add(aObj);
         }
 

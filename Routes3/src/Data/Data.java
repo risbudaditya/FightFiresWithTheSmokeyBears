@@ -11,7 +11,8 @@ import org.json.simple.JSONObject;
  */
 public class Data {
 
-    public static final String FIRES_CLUSTERS_ENDPOINT = "http://40a72073.ngrok.io/route_info";
+    public static final String FIRES_CLUSTERS_ENDPOINT = "http://8c8b83af.ngrok.io/route_info";
+    public static final String VICTIMS_ENDPIONT = "http://8c8b83af.ngrok.io/victims";
 
     public static final String API_KEY = "AIzaSyC7bSWxKk7Lt6SAKu0vQPC_UDDj9KFssmk";
 
@@ -32,6 +33,6 @@ public class Data {
         clusters = new Clusters();
         clusters.loadClusters(aFiresClusters);
         locations = new Locations();
-        locations.load(RESTClient.getJSON("other"));
+        locations.load(RESTClient.getJSON(VICTIMS_ENDPIONT));
     }
 }
