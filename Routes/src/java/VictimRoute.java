@@ -1,3 +1,4 @@
+import ClustersData.Cluster;
 import ClustersData.Clusters;
 import FiresData.Fires;
 
@@ -18,6 +19,9 @@ public class VictimRoute {
         clusters = aClusters;
     }
 
-
+    public String getRouteToNearestCluster() {
+        Cluster cluster = getClosestCluster();
+        String
+    }
 
 }

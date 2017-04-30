@@ -44,7 +44,7 @@ public class Fires extends ArrayList<Fire> {
             JSONArray obj = it.next();
             Fire aFire = new Fire();
             aFire.lat = new Double((Double)obj.get(0)).toString();
-            aFire.long = new Double((Double)obj.get(1)).toString();
+            aFire.lon = new Double((Double)obj.get(1)).toString();
             aFire.intensity = new Double((Double)obj.get(2)).toString();
             aFire.detected = (String) obj.get(3);
             aFire.time = (String) obj.get(4);
