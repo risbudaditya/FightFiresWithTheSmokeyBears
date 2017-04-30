@@ -10,6 +10,7 @@ import Google.Directions;
 import Google.Route;
 import com.google.maps.OkHttpRequestHandler;
 import com.google.maps.errors.ApiException;
+import com.google.maps.model.DirectionsRoute;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -48,6 +49,23 @@ public class VictimRoute {
     public String getRouteToClusterURL(Data data, Location location, Cluster cluster) {
         Route aRoute = new Route();
         aRoute.add(location);
+        aRoute.add(cluster);
+        return aRoute.getURL();
+    }
+
+    public String getRouteToClusterURLBeta(Data data, Location location, Cluster cluster) throws InterruptedException, ApiException, IOException {
+        Route aRoute = new Route();
+        aRoute.add(location);
+        Directions aDirections = new Directions();
+        DirectionsRoute[] routes = aDirections.getMultipleRoutes(data.aGCTX, location, cluster);
+        for(int i = 0;i<routes.length;i++) {
+            if(!aDirections.routeHasFires(data.fires, routes[i])) {
+                for(int j=0;j<routes[i].legs[0].steps.length;j++) {
+                    aRoute.addLatLong(routes[i].legs[0].steps[j].endLocation);
+                }
+                break;
+            }
+        }
         aRoute.add(cluster);
         return aRoute.getURL();
     }

@@ -1,5 +1,8 @@
 package Google;
 
+import Data.LocationsData.Location;
+import com.google.maps.model.LatLng;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -19,4 +22,11 @@ public class Route extends ArrayList<Coordinate> {
         }
         return aBuilder.toString();
     }
+
+    public void addLatLong(LatLng latLong) {
+        Location aLocation = new Location();
+        aLocation.lat  = new Double(latLong.lat).toString();
+        aLocation.lon  = new Double(latLong.lng).toString();
+    }
+
 }

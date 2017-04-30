@@ -1,5 +1,7 @@
 package Google;
 
+import Data.FiresData.Fire;
+import Data.FiresData.Fires;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.errors.ApiException;
@@ -33,7 +35,27 @@ public class Directions {
         return aResult.routes;
     }
 
-    public boolean coordinateIsOnRoute(Coordinate aCoord, DirectionsRoute route) {
+    public boolean routeHasFires(Fires fires, DirectionsRoute route) {
+
+        for(Fire aFire : fires) {
+            for(int i=0;i<route.legs[0].steps.length;i++) {
+                if(distFrom(new Float(aFire.lat), new Float(aFire.lon), new Double(route.legs[0].steps[i].endLocation.lat).longValue(),new Double(route.legs[0].steps[i].endLocation.lng).longValue())<1)
+                    return true;
+            }
+        }
         return false;
+    }
+
+    public static float distFrom(float lat1, float lng1, float lat2, float lng2) {
+        double earthRadius = 6371000; //meters
+        double dLat = Math.toRadians(lat2-lat1);
+        double dLng = Math.toRadians(lng2-lng1);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLng/2) * Math.sin(dLng/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        float dist = (float) (earthRadius * c);
+
+        return dist;
     }
 }
