@@ -1,0 +1,1 @@
+<%@ page import="Hello.Hello" %><%=Hello.hello()%>

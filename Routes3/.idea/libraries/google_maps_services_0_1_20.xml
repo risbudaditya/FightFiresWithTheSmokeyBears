@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="google-maps-services-0.1.20">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/google-maps-services-0.1.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/json-simple-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

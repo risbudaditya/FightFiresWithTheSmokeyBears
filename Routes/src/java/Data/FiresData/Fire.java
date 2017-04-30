@@ -1,12 +1,14 @@
 package FiresData;
 
+import Google.Coordinate;
+
 import java.sql.Time;
 import java.util.Date;
 
 /**
  * Created by tyler on 4/29/2017.
  */
-public class Fire {
+public class Fire implements Coordinate {
     public String lat;
     public String lon;
     public String intensity;
