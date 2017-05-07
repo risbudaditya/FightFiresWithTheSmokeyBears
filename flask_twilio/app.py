@@ -72,7 +72,7 @@ if table_count[0][0] == 0:
     cursor.execute(
         "INSERT INTO cluster (latitude, longitude, number_of_people) VALUES (36297, -119156, 15)"
     )
-
+cursor.execute("""INSERT INTO person (phone_number, latitude, longitude) VALUES (123456789,36287,-119166)""")
 app = Flask(__name__)
 
 @app.route("/message", methods=["POST"] )
@@ -81,18 +81,19 @@ def message():
     # This section is for victim flow
 
     #----------------------------------------------
-    # body = request.values.get("Body")
-    # print(body)
-    # if body == 'victim_flag':
-    #     # json = request.json()
-    #     url = 'http://www.google.com'
-    #     phone_number = '2018382463'
-    #     client.messages.create(to=phone_number,from_=twilio_number,body=url)
-    # else:
+     body = request.stream.read().decode("utf-8")
+     print(body)
+     if body=='victim_flag':
+         print('sending texts')
+         import routes
+         texts = routes.getRoutes(cursor)
+         for text in texts:
+             client.messages.create(to=text[0],from_=twilio_number,body=text[1])
+    #else:
     #     number = request.values.get("From")
-    #     media_url = request.values.get("MediaUrl0", "")
+    #      media_url = request.values.get("MediaUrl0", "")
     # import re
-    #     print(body)
+    #      print(body)
     # r = requests.get(body.split()[-1])
     # a=re.search(r"""cacheResponse.*?,(.*?),(.*?)]""",str(r.content))
     # latitude = float(a.group(1))
